@@ -96,7 +96,7 @@ html_char
 
 QUOTED_STRING
   = '"' '"' {return "";}
-  / v:('"' chars ("\\" NEWLINE chars)? '"') rest:(_ '+' _ v:QUOTED_STRING {return v})? { return v[1] + rest; }
+  / v:('"' chars ("\\" NEWLINE chars)? '"') rest:(_ '+' _ v:QUOTED_STRING {return v})? { return rest === null ? v[1] : (v[1] + rest); }
 
 chars
   = chars:char+ { return chars.join(""); }

@@ -147,7 +147,7 @@ module.exports = (function() {
         peg$c98 = { type: "literal", value: "\\", description: "\"\\\\\"" },
         peg$c99 = "+",
         peg$c100 = { type: "literal", value: "+", description: "\"+\"" },
-        peg$c101 = function(v, rest) { return v[1] + rest; },
+        peg$c101 = function(v, rest) { return rest === null ? v[1] : (v[1] + rest); },
         peg$c102 = function(chars) { return chars.join(""); },
         peg$c103 = /^[^"\\\0-\x1F]/,
         peg$c104 = { type: "class", value: "[^\"\\\\\\0-\\x1F]", description: "[^\"\\\\\\0-\\x1F]" },
