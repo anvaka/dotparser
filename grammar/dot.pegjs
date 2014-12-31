@@ -5,7 +5,7 @@
  */
 
 start
-  = graph
+  = graph+
 
 graph "graph"
   = _ strict:"strict"i? _ type:("graph"i / "digraph"i) _ id:ID? _ "{" children:stmt_list "}" _ {

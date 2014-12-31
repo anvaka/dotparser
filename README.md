@@ -1,16 +1,27 @@
 # dotparser
 
-Parser of GraphViz dot file format
+Parser of GraphViz dot file format.
 
-# changing grammar
+# usage
 
-If you've changed grammar and want to have an updated parser, run this:
+``` js
+ var parse = require('dotparser');
+ var ast = parse('graph g {}');
 
+ // ast is now an abstract syntax tree of an empty graph:
+ // [{
+ //   "type": "graph",
+ //   "children": null,
+ //   "id": "g"
+ // }]
 ```
-npm run build
-```
 
-This will generate a new parser and save it into `grammar/dot.js` file
+# why?
+
+The produced output is not bound to any specific graph library. It can be used
+by graph library authors to transform dot files into their own graph representation.
+
+This implementation is capable of parsing all graphs from standard [graphviz test suite](https://github.com/ellson/graphviz/tree/master/rtest/graphs).
 
 # install
 
@@ -19,6 +30,16 @@ With [npm](https://npmjs.org) do:
 ```
 npm install dotparser
 ```
+
+# compiling grammar
+
+If you've changed grammar and want to have an updated parser, run this:
+
+```
+npm run build
+```
+
+This will generate a new parser and save it into `grammar/dot.js` file
 
 # license
 
