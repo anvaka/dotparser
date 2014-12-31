@@ -26,3 +26,12 @@ test('it can read numerics', function (t) {
 
   t.end();
 });
+
+test('it can read unicode', function (t) {
+  var ast = parse('graph こんにちは世界{}');
+  t.equals(ast.type, 'graph', 'graph is there');
+  t.equals(ast.id, 'こんにちは世界', 'graph id is there');
+  t.equals(ast.children, null, 'No children');
+
+  t.end();
+});
