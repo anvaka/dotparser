@@ -4,7 +4,8 @@
   "description": "Parser of GraphViz dot file format",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tap test/*.js",
+    "build": "pegjs grammar/dot.pegjs"
   },
   "keywords": [
     "dot",
@@ -18,5 +19,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/anvaka/dotparser"
+  },
+  "devDependencies": {
+    "pegjs": "^0.8.0",
+    "tap": "^0.4.13"
   }
 }
