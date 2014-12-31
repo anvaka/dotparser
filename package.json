@@ -1,0 +1,22 @@
+{
+  "name": "dotparser",
+  "version": "0.1.0",
+  "description": "Parser of GraphViz dot file format",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "dot",
+    "xdot",
+    "graphviz",
+    "parser",
+    "ast"
+  ],
+  "author": "Andrei Kashcha",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anvaka/dotparser"
+  }
+}
