@@ -17,3 +17,12 @@ test('it can read quoted strings', function (t) {
 
   t.end();
 });
+
+test('it can read numerics', function (t) {
+  var ast = parse('graph 42 {}');
+  t.equals(ast.type, 'graph', 'graph is there');
+  t.equals(ast.id, 42, 'graph id is there');
+  t.equals(ast.children, null, 'No children');
+
+  t.end();
+});

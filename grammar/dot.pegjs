@@ -3,6 +3,25 @@
  *
  * This file is based on https://github.com/siefkenj/dotgraph
  */
+{
+  // NUMBER rule ("-"? ("." [0-9]+ / [0-9]+("." [0-9]*)?))
+  // produces array of two top level elements: optional "-" sign, and
+  // reminder. Reminder also produces two top level elements:
+  // one matching "\.\d+" (fraction, without whole part), and the other one
+  // matching \d+(\.\d*)?).
+  function dot_parseNumericId(match) {
+    // Let's flatten this hierarchy and return parsed number:
+    return parseFloat(flatten(match));
+
+    function flatten(v) {
+      if (typeof v === 'string') return v;
+      if (v === null) return ''; // ignore optional parts;
+
+      // otherwise, recursively flatten and return:
+      return v.map(flatten).join('');
+    }
+  }
+}
 
 start
   = graph
@@ -78,8 +97,7 @@ STRING
 
 NUMBER "NUMBER"
   = n:("-"? ("." [0-9]+ / [0-9]+("." [0-9]*)?)) {
-       flatten = function(v){ return typeof v === 'string' ? v : v.map(flatten).join(''); }
-       return parseFloat(flatten(n));
+       return dot_parseNumericId(n);
     }
 
 /* html strings are enclosed in <>. The inside of those strings is xml.  All we care about
