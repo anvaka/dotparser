@@ -189,8 +189,31 @@ html_char
   = v:(!('>'/'<') v:. { return v; })+ { return v.join(""); }
 
 QUOTED_STRING
-  = '"' '"' {return "";}
-  / v:('"' chars ("\\" NEWLINE chars)? '"') rest:(_ '+' _ v:QUOTED_STRING {return v})? { return rest === null ? v[1] : (v[1] + rest); }
+  = '"' chars:DoubleStringCharacter* '"' { return chars.join(""); }
+
+DoubleStringCharacter
+  = QuoteEscape
+  / !('"' / LineTerminator) SourceCharacter { return text(); }
+  / LineContinuation
+
+QuoteEscape
+  = v:("\\".) { return v[1] === '"' ? '"' : v[0] + v[1]; }
+
+LineContinuation
+  = "\\" LineTerminatorSequence { return ""; }
+
+LineTerminator
+  = [\n\r\u2028\u2029]
+
+LineTerminatorSequence "end of line"
+  = "\n"
+  / "\r\n"
+  / "\r"
+  / "\u2028"
+  / "\u2029"
+
+SourceCharacter
+  = .
 
 chars
   = chars:char+ { return chars.join(""); }
