@@ -127,7 +127,7 @@ module.exports = (function() {
         peg$c81 = /^[0-9]/,
         peg$c82 = { type: "class", value: "[0-9]", description: "[0-9]" },
         peg$c83 = function(n) {
-               return dot_parseNumericId(n);
+               return parseFloat(text());
             },
         peg$c84 = function(v) { return {type:'id', value:v.slice(1,v.length-1), html:true}; },
         peg$c85 = "<",
@@ -2419,26 +2419,6 @@ module.exports = (function() {
 
       return s0;
     }
-
-
-      // NUMBER rule ("-"? ("." [0-9]+ / [0-9]+("." [0-9]*)?))
-      // produces array of two top level elements: optional "-" sign, and
-      // reminder. Reminder also produces two top level elements:
-      // one matching "\.\d+" (fraction, without whole part), and the other one
-      // matching \d+(\.\d*)?).
-      function dot_parseNumericId(match) {
-        // Let's flatten this hierarchy and return parsed number:
-        return parseFloat(flatten(match));
-
-        function flatten(v) {
-          if (typeof v === 'string') return v;
-          if (v === null) return ''; // ignore optional parts;
-
-          // otherwise, recursively flatten and return:
-          return v.map(flatten).join('');
-        }
-      }
-
 
     peg$result = peg$startRuleFunction();
 
