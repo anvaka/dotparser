@@ -2,6 +2,8 @@
 
 Parser of GraphViz dot file format.
 
+[![Build Status](https://travis-ci.org/anvaka/dotparser.svg)](https://travis-ci.org/anvaka/dotparser)
+
 # usage
 
 ``` js
