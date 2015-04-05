@@ -23,6 +23,40 @@ test('it can parse huge graphs', function(t) {
   t.end();
 });
 
+test('it can parse graphs with nodes', function(t) {
+  var ast = parse('graph {a; b;}')[0];
+  t.equals(ast.children.length, 2, 'Two nodes found');
+  t.equals(ast.children[0].type, 'node_stmt', 'Correct type for node');
+  t.equals(ast.children[1].type, 'node_stmt', 'Correct type for node');
+
+  t.end();
+});
+
+test('it can parse graphs with edges', function(t) {
+  var ast = parse('graph {a -> b; b->c}')[0];
+  t.equals(ast.children.length, 2, 'Two edges found');
+  t.equals(ast.children[0].type, 'edge_stmt', 'Correct type for edge');
+  t.equals(ast.children[1].type, 'edge_stmt', 'Correct type for edge');
+
+  t.end();
+});
+
+test('it can parse graphs with mixed nodes/edges', function(t) {
+  var ast = parse('graph {a -> b; c}')[0];
+  t.equals(ast.children.length, 2, 'Two types found');
+  t.equals(ast.children[0].type, 'edge_stmt', 'Correct type for edge');
+  t.equals(ast.children[1].type, 'node_stmt', 'Correct type for node');
+
+  t.end();
+});
+
+test('it can parse graphs with subgraphs', function(t) {
+  var ast = parse('graph {{b c}}')[0];
+  t.equals(ast.children.length, 1, 'type is found');
+  t.equals(ast.children[0].type, 'subgraph', 'Correct type for subgraph');
+
+  t.end();
+});
 test('it can parse multiple graphs', function (t) {
   var ast = parse('graph a {}\rgraph b {}');
 
