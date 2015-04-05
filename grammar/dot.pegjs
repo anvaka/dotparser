@@ -8,7 +8,8 @@ start
   = graph+
 
 graph
-  = _ strict:"strict"i? _ type:("graph"i / "digraph"i) _ id:ID? _ "{" children:stmt_list "}" _ {
+  = _ strict:"strict"i? _ type:("graph"i / "digraph"i) _ id:ID? _ "{" children:stmt_list ? _ "}" _ {
+      if (children === null) children = [];
       var ret = {type:type.toLowerCase(), children:children};
       if (strict) { ret.strict = true }
       if (id) { ret.id = id }
@@ -16,7 +17,7 @@ graph
     }
 
 stmt_list
-  = _ v:(s:stmt _ ';'? _ v:stmt_list? {return [s].concat(v||[]);})?  { return v; }
+  = _ s:stmt _ ";"? e:(_ s:stmt _";"?  { return s; })* { return [s].concat(e); }
 
 stmt
   // an assignment as a statement e.g. 'label=4' is shorthand for 'graph [label=4]',
