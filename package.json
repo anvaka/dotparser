@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "tap test/*.js",
-    "build": "pegjs grammar/dot.pegjs"
+    "build": "pegjs grammar/dot.pegjs",
+    "start": "npm run build"
   },
   "keywords": [
     "dot",
@@ -21,7 +22,7 @@
     "url": "https://github.com/anvaka/dotparser"
   },
   "devDependencies": {
-    "pegjs": "^0.8.0",
-    "tap": "^0.4.13"
+    "pegjs": "^0.9.0",
+    "tap": "^2.0.0"
   }
 }
