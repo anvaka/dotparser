@@ -138,6 +138,12 @@ subgraph
         children:[]
       };
     }
+  / _ '{' _ s:stmt_list? _ '}' {
+      return {
+      type: 'subgraph',
+      children: s
+      }
+    }
 
 compass_pt
   = 'n'/'ne'/'e'/'se'/'s'/'sw'/'w'/'nw'

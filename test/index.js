@@ -57,6 +57,26 @@ test('it can parse graphs with subgraphs', function(t) {
 
   t.end();
 });
+
+test('it can parse anonymous subgraphs', function(t) {
+  var ast = parse('graph { {} }')[0];
+  t.equals(ast.type, 'graph', 'graph type is there');
+  t.equals(ast.children.length, 1, 'type is found');
+  t.equals(ast.children[0].type, 'subgraph', 'Correct type for subgraph');
+
+  t.end();
+});
+
+test('it can parse multiple anonymous subgraphs', function(t) {
+  var ast = parse('graph { {}{} }')[0];
+  t.equals(ast.type, 'graph', 'graph type is there');
+  t.equals(ast.children.length, 2, 'type is found');
+  t.equals(ast.children[0].type, 'subgraph', 'Correct type for subgraph');
+  t.equals(ast.children[1].type, 'subgraph', 'Correct type for subgraph');
+
+  t.end();
+});
+
 test('it can parse multiple graphs', function (t) {
   var ast = parse('graph a {}\rgraph b {}');
 
