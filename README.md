@@ -13,7 +13,7 @@ Parser of GraphViz dot file format.
  // ast is now an abstract syntax tree of an empty graph:
  // [{
  //   "type": "graph",
- //   "children": null,
+ //   "children": [],
  //   "id": "g"
  // }]
 ```

@@ -17,7 +17,7 @@ graph
     }
 
 stmt_list
-  = _ s:stmt _ ";"? e:(_ s:stmt _";"?  { return s; })* { return [s].concat(e); }
+  = _ s:stmt _ ";"? e:(_ other:stmt _";"?  { return other; })* { return [s].concat(e); }
 
 stmt
   // an assignment as a statement e.g. 'label=4' is shorthand for 'graph [label=4]',
@@ -54,7 +54,7 @@ attr_list
   }
 
 a_list
-  = _ id:ID eq:(_ '=' _ id:ID {return id})? _ ','? rest:a_list? {
+  = _ id:ID eq:(_ '=' _ v:ID {return v})? _ ','? rest:a_list? {
         return [{
           type:'attr',
           id:id,

@@ -22,7 +22,7 @@
     "url": "https://github.com/anvaka/dotparser"
   },
   "devDependencies": {
-    "pegjs": "^0.9.0",
-    "tap": "^2.0.0"
+    "pegjs": "^0.10.0",
+    "tap": "^12.0.1"
   }
 }
