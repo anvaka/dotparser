@@ -124,26 +124,13 @@ subgraph
         } : {
           type:'subgraph'
         }
-      })? '{' s:stmt_list '}' {
+      })? '{' s:stmt_list? '}' {
         g = g || {
           type:'subgraph'
         };
         g.children = s || [];
         return g;
       }
-  / 'subgraph'i _ id:ID {
-      return {
-        type:'subgraph',
-        id:id,
-        children:[]
-      };
-    }
-  / _ '{' _ s:stmt_list? _ '}' {
-      return {
-      type: 'subgraph',
-      children: s
-      }
-    }
 
 compass_pt
   = 'n'/'ne'/'e'/'se'/'s'/'sw'/'w'/'nw'
