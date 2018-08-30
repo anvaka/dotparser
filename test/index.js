@@ -150,3 +150,18 @@ test('it ignore whitespace in attributes list', function (t) {
   t.equals(ast.children[0].target, "graph", "attributes are there");
   t.end();
 });
+
+test('it ignores comma in attributes list', function (t) {
+  var ast = parse('digraph { graph [label=l1,rankdir=TB]} ')[0];
+  t.equals(ast.type, 'digraph', 'graph type is there');
+  t.equals(ast.children[0].target, "graph", "attributes are there");
+  t.end();
+});
+
+test('it ignores semicolon in attributes list', function (t) {
+  // we have empty attributes list, and semicolon between them:
+  var ast = parse('digraph { graph [label=l1;rankdir=TB]} ')[0];
+  t.equals(ast.type, 'digraph', 'graph type is there');
+  t.equals(ast.children[0].target, "graph", "attributes are there");
+  t.end();
+});
