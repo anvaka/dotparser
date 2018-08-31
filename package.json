@@ -1,6 +1,6 @@
 {
   "name": "dotparser",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Parser of GraphViz dot file format",
   "main": "index.js",
   "scripts": {
