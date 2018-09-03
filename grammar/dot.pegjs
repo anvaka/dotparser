@@ -124,7 +124,7 @@ subgraph
         } : {
           type:'subgraph'
         }
-      })? '{' s:stmt_list? '}' {
+      })? '{' s:stmt_list? _ '}' {
         g = g || {
           type:'subgraph'
         };

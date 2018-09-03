@@ -59,6 +59,33 @@ test('it can parse graphs with subgraphs', function(t) {
   t.end();
 });
 
+test('it can parse graphs with subgraphs containing a node with space before', function(t) {
+  var ast = parse('graph {{ a}}')[0];
+  t.equals(ast.children.length, 1, 'type is found');
+  t.equals(ast.children[0].type, 'subgraph', 'Correct type for subgraph');
+  t.equals(ast.children[0].children.length, 1, 'Correct number of children in subgraph');
+
+  t.end();
+});
+
+test('it can parse graphs with subgraphs containing a node with space after', function(t) {
+  var ast = parse('graph {{a }}')[0];
+  t.equals(ast.children.length, 1, 'type is found');
+  t.equals(ast.children[0].type, 'subgraph', 'Correct type for subgraph');
+  t.equals(ast.children[0].children.length, 1, 'Correct number of children in subgraph');
+
+  t.end();
+});
+
+test('it can parse graphs with subgraphs containing only space', function(t) {
+  var ast = parse('graph {{ }}')[0];
+  t.equals(ast.children.length, 1, 'type is found');
+  t.equals(ast.children[0].type, 'subgraph', 'Correct type for subgraph');
+  t.equals(ast.children[0].children.length, 0, 'Correct number of children in subgraph');
+
+  t.end();
+});
+
 test('it can parse anonymous subgraphs', function(t) {
   var ast = parse('graph { {} }')[0];
   t.equals(ast.type, 'graph', 'graph type is there');
