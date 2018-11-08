@@ -182,6 +182,15 @@ test('it escapes only quotes', function (t) {
   t.end();
 });
 
+test('it parses attributes list', function (t) {
+  var ast = parse('digraph { graph [width=0]} ')[0];
+  var attribute = ast.children[0].attr_list[0];
+  t.equals(attribute.type, 'attr', 'attribute is found');
+  t.equals(attribute.id, 'width', 'name is correct');
+  t.equals(attribute.eq, 0, 'value is correct');
+  t.end();
+});
+
 test('it ignore whitespace in attributes list', function (t) {
   // we have empty attributes list, and whitespace between them:
   var ast = parse('digraph { graph [\r]} ')[0];

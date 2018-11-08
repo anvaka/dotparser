@@ -200,7 +200,7 @@ function peg$parse(input, options) {
               return [{
                 type:'attr',
                 id:id,
-                eq:eq || null
+                eq: eq
               }].concat(rest || []);
           },
       peg$c32 = function(id, rhs, attr) {
