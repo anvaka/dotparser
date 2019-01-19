@@ -137,6 +137,7 @@ compass_pt
 
 ID
   = STRING
+  / NUMBER_STRING
   / NUMBER
   / QUOTED_STRING
   / HTML_STRING
@@ -145,7 +146,12 @@ STRING "UNICODE_STRING"
   = first:StringStart rest:StringPart* {
       return first + rest.join('');
     }
-
+    
+NUMBER_STRING
+  = first:NUMBER rest:STRING {
+    return first + rest;
+  }
+  
 StringStart
   = UnicodeLetter
   / "$"
