@@ -4,7 +4,7 @@
   "description": "Parser of GraphViz dot file format",
   "main": "index.js",
   "scripts": {
-    "test": "tap test/*.js",
+    "test": "tap --branches=40 --lines=50 --statements=50 --functions=60 test/*.js",
     "build": "pegjs grammar/dot.pegjs",
     "start": "npm run build"
   },
@@ -23,6 +23,6 @@
   },
   "devDependencies": {
     "pegjs": "^0.10.0",
-    "tap": "^14.10.5"
+    "tap": "^15.0.9"
   }
 }
