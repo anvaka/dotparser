@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Parser of GraphViz dot file format",
   "main": "index.js",
+  "jsdelivr": "dist/dotparser.min.js",
+  "unpkg": "dist/dotparser.min.js",
   "scripts": {
     "test": "tap --branches=40 --lines=50 --statements=50 --functions=60 test/*.js",
-    "build": "pegjs grammar/dot.pegjs",
+    "build": "pegjs grammar/dot.pegjs && browserify grammar/dot.js -s dotParser -o dist/dotparser.js && uglifyjs dist/dotparser.js -o dist/dotparser.min.js",
     "start": "npm run build"
   },
   "keywords": [
