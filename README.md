@@ -2,7 +2,7 @@
 
 Parser of GraphViz dot file format.
 
-[![Build Status](https://travis-ci.org/anvaka/dotparser.svg)](https://travis-ci.org/anvaka/dotparser)
+ [![Build Status](https://github.com/anvaka/dotparser/actions/workflows/tests.yaml/badge.svg)](https://github.com/anvaka/dotparser/actions/workflows/tests.yaml)
 
 # usage
 
