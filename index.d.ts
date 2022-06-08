@@ -1,6 +1,6 @@
 declare module 'dotparser' {
   export type CompassPt = 'n' | 'ne' | 'e' | 'se' | 's' | 'sw' | 'w' | 'nw';
-  export type Stmt = AttrStmt | EdgeStmt | NodeStmt;
+  export type Stmt = AttrStmt | EdgeStmt | NodeStmt | Subgraph;
 
   export interface Port {
     type: 'port';
