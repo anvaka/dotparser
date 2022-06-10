@@ -4,6 +4,7 @@ var path = require('path')
 var test = require('tap').test;
 var parse = require('../');
 var suitePath = path.join(__dirname, 'graphs');
+var ignoreExtensions = new Set(['.ps', '.gif'])
 
 if (!fs.existsSync(suitePath)) {
   console.warn('To test against graphviz suite download graphs from ')
@@ -40,6 +41,7 @@ function readFiles(dirname, onFileContent, onError) {
       return;
     }
     filenames.forEach(function(filename) {
+      if (ignoreExtensions.has(path.extname(filename))) return;
       fs.readFile(path.join(dirname, filename), 'utf-8', function(err, content) {
         if (err) {
           onError(filename, err);
