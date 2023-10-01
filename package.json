@@ -6,7 +6,7 @@
   "jsdelivr": "dist/dotparser.min.js",
   "unpkg": "dist/dotparser.min.js",
   "scripts": {
-    "test": "tap --branches=40 --lines=50 --statements=50 --functions=60 test/*.js",
+    "test": "tap --allow-incomplete-coverage test/*.js",
     "build": "pegjs grammar/dot.pegjs && browserify grammar/dot.js -s dotParser -o dist/dotparser.js && uglifyjs dist/dotparser.js -o dist/dotparser.min.js",
     "start": "npm run build"
   },
@@ -26,7 +26,7 @@
   "devDependencies": {
     "browserify": "^17.0.0",
     "pegjs": "^0.10.0",
-    "tap": "^16.0.1",
+    "tap": "^18.1.4",
     "uglify-js": "^3.13.10"
   }
 }
